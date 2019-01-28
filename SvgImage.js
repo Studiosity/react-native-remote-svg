@@ -41,6 +41,7 @@ class SvgImage extends Component {
   render() {
     const props = this.props;
     const { svgContent } = this.state;
+    const { color } = this.props;
     if (svgContent) {
       return (
         <View pointerEvents="none" style={[props.style, props.containerStyle]}>
@@ -56,7 +57,7 @@ class SvgImage extends Component {
               props.style,
             ]}
             scrollEnabled={false}
-            source={{ html: `${firstHtml}${svgContent}${lastHtml}` }}
+            source={{ html: `${firstHtml}${color?svgContent.replace(/color/g,color):svgContent}${lastHtml}` }}
           />
         </View>
       );
